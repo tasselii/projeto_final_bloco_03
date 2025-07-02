@@ -10,12 +10,7 @@ function FormProduto() {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [categorias, setCategorias] = useState<Categoria[]>([])
-
-
-const [categoria, setCategoria] = useState<Categoria>({
-  id: 0,
-  nome: '',
-})
+  const [categoria, setCategoria] = useState<Categoria>({ id: 0, nome: "" })
   const [produto, setProduto] = useState<Produto>({} as Produto)
 
   const { id } = useParams<{ id: string }>()
@@ -24,15 +19,7 @@ const [categoria, setCategoria] = useState<Categoria>({
     try {
       await listar(`/produtos/${id}`, setProduto)
     } catch (error: any) {
-      alert('Erro ao Buscar Produto')
-    }
-  }
-
-  async function buscarCategoriaPorId(id: string) {
-    try {
-      await listar(`/categorias/${id}`, setCategoria)
-    } catch (error: any) {
-      alert('Erro ao Buscar Categoria')
+      alert("Erro ao Buscar Produto")
     }
   }
 
@@ -40,7 +27,7 @@ const [categoria, setCategoria] = useState<Categoria>({
     try {
       await listar(`/categorias`, setCategorias)
     } catch (error: any) {
-      alert('Erro ao Buscar Categorias')
+      alert("Erro ao Buscar Categorias")
     }
   }
 
@@ -64,7 +51,7 @@ const [categoria, setCategoria] = useState<Categoria>({
 
     let valor: string | number = value
 
-    if (['number', 'range'].includes(type) || (!isNaN(Number(value)) && value !== '')) {
+    if (["number", "range"].includes(type) || (!isNaN(Number(value)) && value !== "")) {
       valor = parseFloat(Number(value).toFixed(2))
     }
 
@@ -76,7 +63,7 @@ const [categoria, setCategoria] = useState<Categoria>({
   }
 
   function retornar() {
-    navigate('/produtos')
+    navigate("/produtos")
   }
 
   async function gerarNovoProduto(e: ChangeEvent<HTMLFormElement>) {
@@ -86,18 +73,16 @@ const [categoria, setCategoria] = useState<Categoria>({
     if (id !== undefined) {
       try {
         await atualizar(`/produtos`, produto, setProduto)
-
-        alert('Produto atualizado com sucesso')
+        alert("Produto atualizado com sucesso")
       } catch (error: any) {
-        alert('Erro ao atualizar o Produto!')
+        alert("Erro ao atualizar o Produto!")
       }
     } else {
       try {
         await cadastrar(`/produtos`, produto, setProduto)
-
-        alert('Produto cadastrado com sucesso')
+        alert("Produto cadastrado com sucesso")
       } catch (error: any) {
-        alert('Erro ao cadastrar o Produto!')
+        alert("Erro ao cadastrar o Produto!")
       }
     }
 
@@ -105,28 +90,20 @@ const [categoria, setCategoria] = useState<Categoria>({
     retornar()
   }
 
-  // Mudança: aqui verifica só se categoria.id é zero para considerar "carregando"
   const carregandoCategoria = categoria.id === 0
 
   return (
     <div className="container flex flex-col items-center mx-auto">
       <h1 className="my-8 text-4xl text-center">
-        {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
+        {id !== undefined ? "Editar Produto" : "Cadastrar Produto"}
       </h1>
 
-      <form
-        className="flex flex-col w-1/2 gap-4"
-        onSubmit={gerarNovoProduto}
-      >
+      <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovoProduto}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">
-            Nome do Produto
-          </label>
+          <label htmlFor="nome">Nome do Produto</label>
           <input
             value={produto.nome}
-            onChange={(
-              e: ChangeEvent<HTMLInputElement>
-            ) => atualizarEstado(e)}
+            onChange={atualizarEstado}
             type="text"
             placeholder="Insira aqui o nome do Produto"
             name="nome"
@@ -136,15 +113,10 @@ const [categoria, setCategoria] = useState<Categoria>({
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">
-            Preço do Produto
-          </label>
-
+          <label htmlFor="preco">Preço do Produto</label>
           <input
             value={produto.preco}
-            onChange={(
-              e: ChangeEvent<HTMLInputElement>
-            ) => atualizarEstado(e)}
+            onChange={atualizarEstado}
             type="number"
             step=".01"
             placeholder="Adicione aqui o preço do Produto"
@@ -155,15 +127,10 @@ const [categoria, setCategoria] = useState<Categoria>({
         </div>
 
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">
-            Foto do Produto
-          </label>
-
+          <label htmlFor="foto">Foto do Produto</label>
           <input
             value={produto.foto}
-            onChange={(
-              e: ChangeEvent<HTMLInputElement>
-            ) => atualizarEstado(e)}
+            onChange={atualizarEstado}
             type="text"
             placeholder="Adicione aqui a foto do Produto"
             name="foto"
@@ -178,30 +145,28 @@ const [categoria, setCategoria] = useState<Categoria>({
             name="categoria"
             id="categoria"
             className="p-2 bg-white border-2 rounded border-slate-700"
-            onChange={(e) =>
-              buscarCategoriaPorId(
-                e.currentTarget.value
-              )
-            }
-            value={categoria.id.toString()} // para deixar o select controlado
+            onChange={(e) => {
+              const selectedId = +e.currentTarget.value
+              const categoriaSelecionada = categorias.find((c) => c.id === selectedId)
+              if (categoriaSelecionada) setCategoria(categoriaSelecionada)
+            }}
+            value={categoria.id || ""}
           >
             <option value="" disabled>
               Selecione uma Categoria
             </option>
-            {categorias.map((categoria) => (
-              <option
-                key={categoria.id}
-                value={categoria.id.toString()}
-              >
-                {categoria.id} {/* Aqui coloque o que quiser mostrar como nome */}
+            {categorias.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nome}
               </option>
             ))}
           </select>
         </div>
+
         <button
           type="submit"
           disabled={carregandoCategoria}
-          className="flex justify-center w-1/2 py-2 mx-auto font-bold text-white rounded disabled:bg-slate-200 bg-slate-400 hover:bg-slate-800"
+          className="flex justify-center w-1/2 py-2 mx-auto font-bold text-white rounded-sm  bg-blue-600 hover:bg-blue-700 "
         >
           {isLoading ? (
             <RotatingLines
@@ -212,11 +177,7 @@ const [categoria, setCategoria] = useState<Categoria>({
               visible={true}
             />
           ) : (
-            <span>
-              {id !== undefined
-                ? 'Atualizar'
-                : 'Cadastrar'}
-            </span>
+            <span>{id !== undefined ? "Atualizar" : "Cadastrar"}</span>
           )}
         </button>
       </form>
