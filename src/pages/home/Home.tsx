@@ -1,3 +1,5 @@
+import ListarProdutos from "../../components/produto/listaprodutos/ListaProdutos"
+import ModalProduto from "../../components/produto/modalproduto/ModalProduto"
 
 function Home() {
     return (
@@ -7,6 +9,7 @@ function Home() {
 					<div className="flex flex-col items-center justify-center gap-4 py-4">
 						<h2 className="text-5xl font-bold">Seja bem vindo!</h2>
 						<p className="text-xl">Aqui você encontra Medicamentos e Cosméticos!</p>
+						<ModalProduto />
 
 						<div className="flex justify-around gap-4">
 							<div className="flex justify-around gap-4">
@@ -23,6 +26,8 @@ function Home() {
 					</div>
 				</div>
 			</div>
+
+			<ListarProdutos />
         </>
     )
 }

@@ -1,10 +1,23 @@
 import { ShoppingCart, User } from "@phosphor-icons/react";
 import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
-import { useState } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
 
+	const navigate = useNavigate()
+
+	const [nome, setNome] = useState<string>("")
+
+	function handleBuscarProdutos(e: ChangeEvent<HTMLInputElement>){
+		setNome(e.target.value)
+	}
+
+	function buscarProdutos(e: FormEvent<HTMLFormElement>){
+		e.preventDefault()
+		navigate(`/consultarnome/${nome}`)
+		setNome('')
+	}
 	
 	return (
 		<>
@@ -21,7 +34,7 @@ function Navbar() {
 					<div className="relative flex items-center justify-center w-2/5 text-black">
 						<form 
 							className="flex items-center justify-center w-full"
-
+							onSubmit={buscarProdutos}
 						>
 							<input
 								className="w-10/12 px-4 py-4 bg-white rounded-lg h-9 focus:outline-none"
@@ -29,11 +42,13 @@ function Navbar() {
 								placeholder="Pesquisar produto pelo nome"
 								id="nome"
 								name="nome"
-								required				
+								required
+								value={nome}
+								onChange={(e: ChangeEvent<HTMLInputElement>) => handleBuscarProdutos(e)}
 							/>
 							<button
 								type="submit"
-								className="h-9 w-9 p-2.5 ms-2 text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg border border-teal-700"
+								className="h-9 w-9 p-2.5 ms-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg border border-teal-700"
 							>
 								<MagnifyingGlass
 									size={14}
@@ -46,19 +61,19 @@ function Navbar() {
 					<div className="flex items-center gap-4 py-4 text-base">
 						<Link
 							to="/produtos"
-							className="text-gray-300 hover:text-white"
+							className="hover:text-blue-700"
 						>
 							PRODUTOS
 						</Link>
 						<Link
 							to="/categorias"
-							className="text-gray-300 hover:text-white"
+							className="hover:text-blue-700"
 						>
 							CATEGORIAS
 						</Link>
 						<Link
 							to="/cadastrarcategoria"
-							className="text-gray-300 hover:text-white"
+							className="hover:text-blue-700"
 						>
 							CADASTRAR CATEGORIA
 						</Link>
