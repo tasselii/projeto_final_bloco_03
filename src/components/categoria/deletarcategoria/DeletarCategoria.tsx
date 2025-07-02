@@ -55,6 +55,10 @@ function DeletarCategoria() {
                     Categoria
                 </header>
 
+                <p className="h-full p-8 text-2xl bg-white text-center">
+                    {categoria.nome || "Carregando..."}
+                </p>
+
                 <div className="flex">
                     <button
                         className="w-full py-2 bg-red-500 text-slate-50 hover:bg-red-600"
