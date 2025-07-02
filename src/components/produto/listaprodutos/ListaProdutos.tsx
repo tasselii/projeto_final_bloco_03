@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { PacmanLoader, PulseLoader } from "react-spinners"
+import { PulseLoader } from "react-spinners"
 import type Produto from "../../../models/Produto"
 import { listar } from "../../../services/Service"
 import CardProdutos from "../cardproduto/CardProdutos"
