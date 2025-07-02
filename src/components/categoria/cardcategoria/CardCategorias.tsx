@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import type Categoria from "../../../models/Categoria";
 import { Pencil, Trash } from "@phosphor-icons/react";
 
-
 interface CardCategoriaProps {
   categoria: Categoria;
 }
@@ -10,7 +9,7 @@ interface CardCategoriaProps {
 function CardCategorias({ categoria }: CardCategoriaProps) {
   return (
     <div className="w-full bg-indigo-100 border-e-indigo-50 px-4 py-2 border border-gray-300 rounded-lg flex items-center justify-between mb-2 shadow-sm">
-      <span className="text-base text-gray-800 flex-grow">{}</span>
+      <span className="text-base text-gray-800 flex-grow">{categoria.nome}</span>
 
       <div className="flex items-center gap-3">
         <Link to={`/editarcategoria/${categoria.id}`} className="text-teal-600 hover:text-teal-800">

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
+import type Produto from "../../../models/Produto"
 import { useParams } from "react-router-dom"
 import { PacmanLoader } from "react-spinners"
 import { listar } from "../../../services/Service"
-import type Produto from "../../../models/Produto"
 import CardProdutos from "../cardproduto/CardProdutos"
+
 
 function ListarProdutosPorNome() {
 	const [produtos, setProdutos] = useState<Produto[]>([]) 

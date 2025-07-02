@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
+import { PacmanLoader, PulseLoader } from "react-spinners"
 import type Produto from "../../../models/Produto"
 import { listar } from "../../../services/Service"
 import CardProdutos from "../cardproduto/CardProdutos"
-import { PacmanLoader } from "react-spinners"
-
 
 
 function ListarProdutos() {
@@ -29,14 +28,7 @@ function ListarProdutos() {
 	return (
 		<>
 			{isLoading && (
-				<PacmanLoader
-					color="#0D9488"
-					margin={0}
-					size={80}
-					speedMultiplier={2}
-					aria-label="Pacman-loading"
-					className="mx-auto my-8"
-				/>
+				<PulseLoader color="#0D9488" size={15} margin={6} speedMultiplier={1.5} />
 			)}
 			<div className="flex justify-center w-full my-4">
 				<div className="container flex flex-col mx-4">
