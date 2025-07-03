@@ -1,69 +1,102 @@
-# React + TypeScript + Vite
+# 💊 Projeto Final React - Bloco 03: E-commerce Farmácia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 **Desenvolvimento de Frontend React com Consumo de API**
 
-Currently, two official plugins are available:
+Este repositório contém o projeto final do Bloco 03 do curso de React, cujo desafio foi construir a interface de um sistema de **comércio eletrônico para uma farmácia**, consumindo uma API previamente desenvolvida. O objetivo foi aplicar os conhecimentos adquiridos no curso em um projeto prático de curta duração (**2h30min**), com foco em componentes reutilizáveis, rotas e consumo de dados via Axios.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📌 Objetivos do Projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Criar a interface para um sistema de farmácia com React
+- Consumir o recurso **Categoria** da API backend (GET, POST, PUT, DELETE)
+- Criar os componentes `Navbar`, `Home` e `Footer`
+- Implementar CRUD completo para categorias
+- Organizar e configurar rotas com React Router DOM
+- Aplicar estilização com TailwindCSS seguindo boas práticas
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tecnologias Utilizadas
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- ⚛️ React (com Vite)
+- 🌐 Axios
+- 🎨 Tailwind CSS
+- 🧭 React Router DOM
+- 💎 Phosphor Icons
+- ⏳ React Spinners
+
+---
+
+## 📂 Componentes Implementados
+
+- 🧭 **Navbar**  
+- 🏠 **Home**  
+- 🔻 **Footer**  
+- 📋 **ListaCategorias**  
+- 📦 **CardCategoria**  
+- ✍️ **FormCategoria** (Cadastro e Atualização)  
+- 🗑️ **DeleteCategoria**
+
+---
+
+## 📎 Organização por Branches
+
+| Etapa | Branch | Conteúdo |
+|-------|--------|----------|
+| 1️⃣ | `01_Componente_Home_navbar_footer` | Componentes básicos e layout com Tailwind |
+| 2️⃣ | `02_CRUD_Categoria` | Integração com backend e implementação do CRUD |
+| 3️⃣ | `03_Rotas` | Configuração de rotas e navegação via Navbar |
+
+---
+
+## 🔁 Requisições à API
+
+- **GET** `/categorias` → Listar categorias  
+- **POST** `/categorias` → Cadastrar nova categoria  
+- **PUT** `/categorias` → Atualizar categoria existente  
+- **DELETE** `/categorias/:id` → Deletar categoria  
+
+---
+
+## 🖼️ Prints do Projeto
+
+### 🏠 Página Home
+![image](https://github.com/user-attachments/assets/5dcaf6bd-9b0f-4086-9da6-1090c1840685)
+
+### 🧭 Navbar
+![image](https://github.com/user-attachments/assets/da2084f1-74fd-4d2a-9cac-994d89b7887c)
+
+### 🔻 Footer
+![image](https://github.com/user-attachments/assets/e9e09f8f-7d61-46a8-8ce5-41f02a3bad7c)
+
+### 📋 Listagem de Categorias
+![image](https://github.com/user-attachments/assets/dd266ab7-f26b-486b-b907-cf40318ccf4d)
+
+### ✍️ Formulário de Categoria (Cadastro e Edição)
+![image](https://github.com/user-attachments/assets/a54ecf53-899a-42fa-a742-abf43d3d6980)
+
+---
+
+## ▶️ Como rodar o projeto localmente
+
+```bash
+# Clone o repositório
+git clone https://github.com/seuusuario/projeto_final_bloco_03.git
+
+# Acesse o diretório do projeto
+cd projeto_final_bloco_03
+
+# Instale as dependências com Yarn
+yarn
+
+# Execute a aplicação
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📬 Contato
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Desenvolvido por [**Thiago Tasseli**](https://github.com/tasselii)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Fique à vontade para tirar dúvidas, dar sugestões ou contribuir! 😄  
+Entre em contato através do GitHub ou abra uma issue neste repositório.
