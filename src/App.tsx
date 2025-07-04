@@ -9,11 +9,14 @@ import DeletarProduto from "./components/produto/deletarproduto/DeletarProduto"
 import FormProduto from "./components/produto/formproduto/FormProduto"
 import ListarProdutos from "./components/produto/listaprodutos/ListaProdutos"
 import ListarProdutosPorNome from "./components/produto/listarprodutospornome/ListarProdutosPorNome"
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify"
 
 function App() {
   
   return (
     <>
+    <ToastContainer />
       <BrowserRouter>
         <div className="flex flex-col min-h-screen">
           <Navbar />

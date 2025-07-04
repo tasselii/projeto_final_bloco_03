@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import type Categoria from "../../../models/Categoria"
 import type Produto from "../../../models/Produto"
 import { listar, atualizar, cadastrar } from "../../../services/Service"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function FormProduto() {
   const navigate = useNavigate()
@@ -19,7 +20,7 @@ function FormProduto() {
     try {
       await listar(`/produtos/${id}`, setProduto)
     } catch (error: any) {
-      alert("Erro ao Buscar Produto")
+      ToastAlerta("Erro ao Buscar Produto", "erro")
     }
   }
 
@@ -27,7 +28,7 @@ function FormProduto() {
     try {
       await listar(`/categorias`, setCategorias)
     } catch (error: any) {
-      alert("Erro ao Buscar Categorias")
+      ToastAlerta("Erro ao Buscar Categorias", "erro")
     }
   }
 
@@ -73,16 +74,16 @@ function FormProduto() {
     if (id !== undefined) {
       try {
         await atualizar(`/produtos`, produto, setProduto)
-        alert("Produto atualizado com sucesso")
+        ToastAlerta("Produto atualizado com sucesso", "sucesso")
       } catch (error: any) {
-        alert("Erro ao atualizar o Produto!")
+        ToastAlerta("Erro ao atualizar o Produto!", "erro")
       }
     } else {
       try {
         await cadastrar(`/produtos`, produto, setProduto)
-        alert("Produto cadastrado com sucesso")
+        ToastAlerta("Produto cadastrado com sucesso", "sucesso")
       } catch (error: any) {
-        alert("Erro ao cadastrar o Produto!")
+        ToastAlerta("Erro ao cadastrar o Produto!", "erro")
       }
     }
 
@@ -166,7 +167,7 @@ function FormProduto() {
         <button
           type="submit"
           disabled={carregandoCategoria}
-          className="flex justify-center w-1/2 py-2 mx-auto font-bold text-white rounded-sm  bg-blue-600 hover:bg-blue-700 "
+          className="flex justify-center w-1/2 py-2 mx-auto font-bold text-white rounded-sm  bg-blue-600 hover:bg-blue-700"
         >
           {isLoading ? (
             <RotatingLines
