@@ -1,4 +1,6 @@
-# 💊 Projeto Final React - Bloco 03: E-commerce Farmácia
+# 💊 E-commerce Farmácia
+
+🔗 **[Visualize o projeto online](https://farmacia-bloco-3.netlify.app)**
 
 🚀 **Desenvolvimento de Frontend React com Consumo de API**
 
