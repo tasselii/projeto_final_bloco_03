@@ -2,6 +2,8 @@
 
 🔗 **[Visualize o projeto online](https://farmacia-bloco-3.netlify.app)**
 
+</br>
+
 🚀 **Desenvolvimento de Frontend React com Consumo de API**
 
 Este repositório contém o projeto final do Bloco 03 do curso de React, cujo desafio foi construir a interface de um sistema de **comércio eletrônico para uma farmácia**, consumindo uma API previamente desenvolvida. O objetivo foi aplicar os conhecimentos adquiridos no curso em um projeto prático de curta duração (**2h30min**), com foco em componentes reutilizáveis, rotas e consumo de dados via Axios.
